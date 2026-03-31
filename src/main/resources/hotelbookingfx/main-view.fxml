@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane fx:id="mainTabPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelbookingfx.controller.MainController"
+            prefHeight="400.0" prefWidth="600.0">
+    <Tab text="Номера">
+        <fx:include source="rooms-view.fxml" />
+    </Tab>
+    <Tab text="Клиенты">
+        <fx:include source="clients-view.fxml" />
+
+    </Tab>
+    <Tab text="Бронирования">
+        <fx:include source="bookings-view.fxml" />
+
+    </Tab>
+</TabPane>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="hotelbookingfx.controller.RoomsController"
+      prefHeight="400.0" prefWidth="600.0">
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Поиск:" />
+        <TextField fx:id="searchField" promptText="Номер комнаты"/>
+        <Button text="🔍 Найти" />
+        <Button text="📋 Показать все"/>
+        <Button text="➕ Добавить номер"/>
+        <Button text="✏️ Редактировать"/>
+        <Button text="❌ Удалить"/>
+
+    </HBox>
+
+    <TableView fx:id="roomsTable">
+        <columns>
+            <TableColumn text="ID" prefWidth="50">
+                <cellValueFactory>
+                    <PropertyValueFactory property="id"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Номер" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="roomNumber"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Тип размещения" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="type"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Статус" prefWidth="100">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn text="Цена за сутки" prefWidth="150">
+                <cellValueFactory>
+                    <PropertyValueFactory property="pricePerNight"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+</VBox>
