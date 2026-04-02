@@ -3,13 +3,15 @@ package hotelbookingfx.model;
 import java.util.Objects;
 
 public class Room {
+    private static int nextId = 1;
     private int id;
-    private int roomNumber;
+    private String roomNumber;
     private String type; // Одноместный, Двухместный, Люкс, Полулюкс
     private String status; // Свободен, Занят, На уборке
     private double pricePerNight; // Стоимость
 
-    public Room(int roomNumber, String type, double pricePerNight) {
+    public Room(String roomNumber, String type, double pricePerNight) {
+        this.id = nextId++;
         this.roomNumber = roomNumber;
         this.type = type;
         this.pricePerNight = pricePerNight;
@@ -19,36 +21,32 @@ public class Room {
         return id;
     }
 
-    public int getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
+    }
+
+    public void setRoomNumber(String roomNumber) {
+        this.roomNumber = roomNumber;
     }
 
     public String getType() {
         return type;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setId(int Id) {
-        this.id = Id;
-    }
-
-    public void setRoomNumber(int roomNumber) {
-        this.roomNumber = roomNumber;
-    }
-
     public void setType(String type) {
         this.type = type;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public double getPricePerNight() {
+        return pricePerNight;
     }
 
     public void setPricePerNight(double pricePerNight) {
@@ -57,9 +55,8 @@ public class Room {
 
 
     @Override
-    public String toString() {
-        return String.format(
-                "ID: %-3d | Номер: %-4d | Тип: %-12s | Статус: %-8s | Цена: %8.2f руб \n", id, roomNumber, type, status, pricePerNight);
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
@@ -69,10 +66,4 @@ public class Room {
         Room room = (Room) o;
         return id == room.id;
     }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
-
