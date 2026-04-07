@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelbookingfx.controller.RoomDialogController"
+            prefWidth="500">
+    <header>
+        <Label text="Добавление номера" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    </header>
+    <content>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="350"/>
+            </columnConstraints>
+            <Label text="Номер комнаты" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="roomNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       promptText="Например: 101"/>
+
+            <Label text="Тип номера: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="typeComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Одноместный"/>
+                        <String fx:value="Двухместный"/>
+                        <String fx:value="Полулюкс"/>
+                        <String fx:value="Люкс"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            <Label text="Цена за сутки" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Например: 3500"/>
+        </GridPane>
+    </content>
+
+    <ButtonType fx:constant="OK"/>
+    <ButtonType fx:constant="CANCEL"/>
+</DialogPane>

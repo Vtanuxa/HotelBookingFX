@@ -16,7 +16,7 @@
         <TextField fx:id="searchField" promptText="Номер комнаты"/>
         <Button text="🔍 Найти" />
         <Button text="📋 Показать все"/>
-        <Button text="➕ Добавить номер"/>
+        <Button text="➕ Добавить номер" onAction="#handleAddRoom"/>
         <Button text="✏️ Редактировать"/>
         <Button text="❌ Удалить"/>
 

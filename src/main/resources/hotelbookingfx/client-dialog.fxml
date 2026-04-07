@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<DialogPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="hotelbookingfx.controller.ClientDialogController"
+            prefWidth="500">
+    <header>
+        <Label text="Добавление клиента" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    </header>
+    <content>
+        <GridPane>
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
+                <ColumnConstraints halignment="LEFT" prefWidth="350"/>
+            </columnConstraints>
+            <Label text="Имя Фамилия Отчество" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="fullNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       promptText="Например: Иванов Иван Иванович"/>
+
+            <Label text="Номер телефона: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="phoneField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                       promptText="Например: +7 (999) 123-45-67"/>
+
+            <Label text="E-mail: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                       promptText="Например: client@example.com"/>
+
+            <Label text="Паспортные данные" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <TextField fx:id="passportField" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                       promptText="Например: 4444 4444"/>
+        </GridPane>
+    </content>
+
+    <ButtonType fx:constant="OK"/>
+    <ButtonType fx:constant="CANCEL"/>
+</DialogPane>

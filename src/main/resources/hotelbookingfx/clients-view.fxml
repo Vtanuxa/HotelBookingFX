@@ -16,13 +16,13 @@
         <TextField fx:id="searchField" promptText="ID клиента"/>
         <Button text="🔍 Найти" />
         <Button text="📋 Показать всех"/>
-        <Button text="➕ Добавить клиента"/>
+        <Button text="➕ Добавить клиента" onAction="#handleAddClient"/>
         <Button text="✏️ Редактировать"/>
         <Button text="❌ Удалить"/>
 
     </HBox>
 
-    <TableView fx:id="clientsTable">
+    <TableView fx:id="clientTable">
         <columns>
             <TableColumn text="ID" prefWidth="50">
                 <cellValueFactory>
@@ -44,11 +44,11 @@
                     <PropertyValueFactory property="email"/>
                 </cellValueFactory>
             </TableColumn>
-<!--            <TableColumn text="Паспорт" prefWidth="80">-->
-<!--                <cellValueFactory>-->
-<!--                    <PropertyValueFactory property="passport"/>-->
-<!--                </cellValueFactory>-->
-<!--            </TableColumn>-->
+            <TableColumn text="Паспорт" prefWidth="80">
+                <cellValueFactory>
+                    <PropertyValueFactory property="passport"/>
+                </cellValueFactory>
+            </TableColumn>
 
         </columns>
     </TableView>

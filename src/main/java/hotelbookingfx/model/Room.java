@@ -15,6 +15,7 @@ public class Room {
         this.roomNumber = roomNumber;
         this.type = type;
         this.pricePerNight = pricePerNight;
+        this.status = "Свободен";
     }
 
     public int getId() {
