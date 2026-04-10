@@ -67,4 +67,11 @@ public class Room {
         Room room = (Room) o;
         return id == room.id;
     }
+
+    @Override
+    public String toString() {
+        return  String.format(
+                "ID: %-3d | Номер комнаты: %-10s | Тип размещения: %-20s | Статус: %-10s | Цена: %-10s",
+                id, roomNumber, type, status, pricePerNight);
+    }
 }

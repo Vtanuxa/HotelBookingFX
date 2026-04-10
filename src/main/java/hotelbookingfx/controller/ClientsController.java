@@ -1,9 +1,9 @@
 package hotelbookingfx.controller;
 
+import hotelbookingfx.controller.ClientDialogController;
 import hotelbookingfx.model.Client;
 import hotelbookingfx.repository.ClientRepository;
 
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.util.List;
@@ -30,18 +29,24 @@ public class ClientsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clientRepository = new ClientRepository();
+        clientRepository = ClientRepository.getInstance();
         clientList = FXCollections.observableArrayList();
-
         setupTableColumns();
         loadClientsData();
     }
 
     private void setupTableColumns() {
-        TableColumn<Client, String> fullNameColumn = (TableColumn<Client, String>) clientTable.getColumns().get(0);
-        TableColumn<Client, String> phoneColumn = (TableColumn<Client, String>) clientTable.getColumns().get(1);
-        TableColumn<Client, String> emailColumn = (TableColumn<Client, String>) clientTable.getColumns().get(2);
-        TableColumn<Client, String> passportColumn = (TableColumn<Client, String>) clientTable.getColumns().get(3);
+        TableColumn<Client, Integer> clientId = (TableColumn<Client, Integer>) clientTable.getColumns().get(0);
+        TableColumn<Client, String> fullNameColumn = (TableColumn<Client, String>) clientTable.getColumns().get(1);
+        TableColumn<Client, String> phoneColumn = (TableColumn<Client, String>) clientTable.getColumns().get(2);
+        TableColumn<Client, String> emailColumn = (TableColumn<Client, String>) clientTable.getColumns().get(3);
+        TableColumn<Client, String> passportColumn = (TableColumn<Client, String>) clientTable.getColumns().get(4);
+
+        clientId.setCellValueFactory(cellData -> {
+            Client client = cellData.getValue();
+            return client == null ? new SimpleIntegerProperty(0).asObject()
+                    : new SimpleIntegerProperty(client.getId()).asObject();
+        });
 
         fullNameColumn.setCellValueFactory(cellData -> {
             Client client = cellData.getValue();
@@ -70,9 +75,10 @@ public class ClientsController implements Initializable {
     }
 
     private void loadClientsData(){
-        List<Client> client = clientRepository.findAll();
+        List<Client> clients = clientRepository.findAll();
         clientList.clear();
-        clientList.addAll(client);
+        clientList.addAll(clients);
+        clientTable.setItems(clientList);
     }
 
     @FXML

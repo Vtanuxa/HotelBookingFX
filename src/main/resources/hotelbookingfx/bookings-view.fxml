@@ -1,40 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
 <?import javafx.scene.control.cell.PropertyValueFactory?>
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="hotelbookingfx.controller.BookingController"
-      prefHeight="400.0" prefWidth="600.0">
-    <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label text="Поиск:" />
-        <TextField fx:id="searchField" promptText="ID заказа"/>
-        <Button text="🔍 Найти" />
-        <Button text="📋 Показать все"/>
-        <Button text="➕ Добавить заказ"/>
-        <Button text="✏️ Редактировать"/>
-        <Button text="❌ Удалить"/>
-
-    </HBox>
-
-    <TableView fx:id="bookingsTable">
-        <columns>
-            <TableColumn text="ID" prefWidth="50">
-                <cellValueFactory>
-                    <PropertyValueFactory property="id"/>
-                </cellValueFactory>
-            </TableColumn>
-            <TableColumn text="ID" prefWidth="80">
-                <cellValueFactory>
-                    <PropertyValueFactory property="ID bookings"/>
-                </cellValueFactory>
-            </TableColumn>
-        </columns>
-    </TableView>
-
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="hotelbookingfx.controller.BookingController">
+    <children>
+        <HBox prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <Label text="Label" />
+                <ComboBox prefWidth="150.0" />
+                <Separator prefWidth="200.0" />
+                <Button onAction="#handleAddBooking" mnemonicParsing="false" text="➕ Новое бронирование" />
+            </children>
+        </HBox>
+        <TableView fx:id="bookingsTable" prefHeight="200.0" prefWidth="200.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="bookingId"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Клиент">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="client"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Номер">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="room"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Заезд">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="checkInDate"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Выезд">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="checkOutDate"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Сумма">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="totalPrice"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Статус">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="status"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </children>
 </VBox>

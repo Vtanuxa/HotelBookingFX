@@ -2,19 +2,25 @@ package hotelbookingfx.repository;
 
 
 import hotelbookingfx.model.Room;
-import org.jetbrains.annotations.NotNull;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static hotelbookingfx.connection.DBConnection.connection;
+//import static hotelbookingfx.connection.DBConnection.connection;
 
 public class RoomRepository {
 
     private List<Room> rooms = new ArrayList<>();
+
+    private static class Holder{
+        private static final RoomRepository INSTANCE = new RoomRepository();
+    }
+
+    public static RoomRepository getInstance(){
+        return Holder.INSTANCE;
+    }
 
     public Room save(Room room){
         rooms.add(room);

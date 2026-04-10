@@ -2,17 +2,24 @@ package hotelbookingfx.repository;
 
 import hotelbookingfx.model.Client;
 
-import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static hotelbookingfx.connection.DBConnection.connection;
 
 public class ClientRepository {
 
     private List<Client> clients = new ArrayList<>();
+
+    private static class Holder{
+        private static final ClientRepository INSTANCE = new ClientRepository();
+    }
+
+    public static ClientRepository getInstance(){
+        return ClientRepository.Holder.INSTANCE;
+    }
+
 
     public Client save(Client client) {
         clients.add(client);

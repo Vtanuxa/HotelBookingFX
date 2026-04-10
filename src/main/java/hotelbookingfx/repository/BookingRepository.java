@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import static hotelbookingfx.connection.DBConnection.connection;
+//import static hotelbookingfx.connection.DBConnection.connection;
 
 public class BookingRepository {
     private List<Booking> bookings = new ArrayList<>();

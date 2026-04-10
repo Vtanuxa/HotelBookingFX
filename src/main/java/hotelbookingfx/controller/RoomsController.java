@@ -30,7 +30,7 @@ public class RoomsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        roomRepository = new RoomRepository();
+        roomRepository = RoomRepository.getInstance();
         roomList = FXCollections.observableArrayList();
 
         setupTableColumns();

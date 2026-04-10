@@ -1,8 +1,7 @@
 module hotelbookingfx {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.sql;
-    requires org.jetbrains.annotations;
+    requires jdk.jdi;
 
 
     opens hotelbookingfx to javafx.fxml;
