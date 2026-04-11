@@ -12,20 +12,24 @@
             fx:controller="hotelbookingfx.controller.RoomDialogController"
             prefWidth="500">
     <header>
-        <Label text="Добавление номера" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Label text="🏨 Добавление номера" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <Label text="Заполните все поля для добавления номера"
+               style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;"/>
     </header>
     <content>
-        <GridPane>
+        <GridPane hgap="10" vgap="10" style="-fx-padding: 10;">
             <columnConstraints>
                 <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
                 <ColumnConstraints halignment="LEFT" prefWidth="350"/>
             </columnConstraints>
-            <Label text="Номер комнаты" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="roomNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"
-                       promptText="Например: 101"/>
 
-            <Label text="Тип номера: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <ComboBox fx:id="typeComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Label text="Номер комнаты:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="roomNumberField" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                       promptText="101"/>
+
+            <Label text="Тип номера:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="typeComboBox" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                      promptText="Выберите тип номера">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Одноместный"/>
@@ -35,11 +39,39 @@
                     </FXCollections>
                 </items>
             </ComboBox>
-            <Label text="Цена за сутки" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1" promptText="Например: 3500"/>
+
+            <Label text="Цена за сутки:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="priceField" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                       promptText="3500"/>
+            <HBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="10">
+                <Label text="Все поля обязательны для заполнения"
+                       style="-fx-font-size: 10px; -fx-text-fill: #e74c3c;"/>
+            </HBox>
         </GridPane>
     </content>
 
     <ButtonType fx:constant="OK"/>
     <ButtonType fx:constant="CANCEL"/>
+
+    <style>
+        .dialog-pane .button {
+        -fx-background-radius: 5;
+        -fx-padding: 7 15 7 15;
+        -fx-font-weight: bold;
+        }
+        .dialog-pane .button:default {
+        -fx-background-color: #2196F3;
+        -fx-text-fill: white;
+        }
+        .dialog-pane .button:cancel {
+        -fx-background-color: #95a5a6;
+        -fx-text-fill: white;
+        }
+        .dialog-pane .button:default:hover {
+        -fx-background-color: #1976D2;
+        }
+        .dialog-pane .button:cancel:hover {
+        -fx-background-color: #7f8c8d;
+        }
+    </style>
 </DialogPane>

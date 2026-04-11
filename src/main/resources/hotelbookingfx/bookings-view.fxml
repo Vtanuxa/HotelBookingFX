@@ -1,63 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="hotelbookingfx.controller.BookingController"
+      prefHeight="550.0" prefWidth="900.0" spacing="10">
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="hotelbookingfx.controller.BookingController">
-    <children>
-        <HBox prefHeight="100.0" prefWidth="200.0">
-            <children>
-                <Label text="Label" />
-                <ComboBox prefWidth="150.0" />
-                <Separator prefWidth="200.0" />
-                <Button text="🔍 Найти" onAction="#handleSearchBooking" />
-                <Button text="📋 Показать всех"/>
-                <Button text="➕ Новое бронирование" mnemonicParsing="false"  onAction="#handleAddBooking"/>
-                <Button text="✏️ Редактировать"/>
-                <Button text="❌ Удалить"/>
-            </children>
-        </HBox>
-        <TableView fx:id="bookingsTable" prefHeight="200.0" prefWidth="200.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="ID">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="bookingId"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Клиент">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="client"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Номер">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="room"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Заезд">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="checkInDate"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Выезд">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="checkOutDate"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Сумма">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="totalPrice"/>
-                    </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="75.0" text="Статус">
-                    <cellValueFactory>
-                        <PropertyValueFactory property="status"/>
-                    </cellValueFactory>
-                </TableColumn>
-            </columns>
-        </TableView>
-    </children>
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Управление бронированиями" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+        <font>
+            <Font size="16"/>
+        </font>
+    </Label>
+
+    <Separator/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Поиск:" />
+        <ComboBox fx:id="searchType" prefWidth="120">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="По ID"/>
+                    <String fx:value="По клиенту"/>
+                    <String fx:value="По номеру"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TextField fx:id="searchField" promptText="Введите значение для поиска" prefWidth="200" HBox.hgrow="ALWAYS"/>
+        <Button text="🔍 Найти" onAction="#handleSearchBooking" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="📋 Показать всех" onAction="#handleShowAllBookings"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Добавить" onAction="#handleAddBooking" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="✏️ Редактировать" onAction="#handleUpdateBooking" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        <Button text="❌ Удалить" onAction="#handleDeleteBooking" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+    </HBox>
+
+    <TableView fx:id="bookingsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn prefWidth="60" text="ID">
+                <cellValueFactory>
+                    <PropertyValueFactory property="bookingId"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="150" text="Клиент">
+                <cellValueFactory>
+                    <PropertyValueFactory property="clientName"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="80" text="Номер">
+                <cellValueFactory>
+                    <PropertyValueFactory property="roomNumber"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Дата заезда">
+                <cellValueFactory>
+                    <PropertyValueFactory property="checkInDate"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Дата выезда">
+                <cellValueFactory>
+                    <PropertyValueFactory property="checkOutDate"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Сумма (₽)">
+                <cellValueFactory>
+                    <PropertyValueFactory property="totalPrice"/>
+                </cellValueFactory>
+            </TableColumn>
+            <TableColumn prefWidth="100" text="Статус">
+                <cellValueFactory>
+                    <PropertyValueFactory property="status"/>
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
+    </TableView>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10">
+        <Label text="Всего бронирований: " style="-fx-font-size: 11px;"/>
+        <Label fx:id="statusLabel" text="0" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+        <Separator orientation="VERTICAL" prefHeight="15"/>
+        <Label fx:id="totalAmountLabel" text="Общая сумма: 0 ₽" style="-fx-font-size: 11px; -fx-text-fill: #2196F3; -fx-font-weight: bold;"/>
+    </HBox>
 </VBox>

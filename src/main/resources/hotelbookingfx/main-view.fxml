@@ -16,7 +16,7 @@
     <Tab text="Клиенты">
         <fx:include source="clients-view.fxml" />
     </Tab>
-    <Tab text="Бронирования">
-        <fx:include source="bookings-view.fxml" />
-    </Tab>
+<!--    <Tab text="Бронирования">-->
+<!--        <fx:include source="bookings-view.fxml" />-->
+<!--    </Tab>-->
 </TabPane>

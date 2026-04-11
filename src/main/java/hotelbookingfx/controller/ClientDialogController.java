@@ -15,7 +15,7 @@ public class ClientDialogController {
     @FXML
     private TextField passportField;
 
-    private Room currentRoom;
+    private Client currentClient;
 
     public Client getClientData(){
         String fullName = fullNameField.getText().trim();

@@ -1,43 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.collections.FXCollections?>
 <DialogPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="hotelbookingfx.controller.ClientDialogController"
-            prefWidth="500">
+            prefWidth="550" style="-fx-background-color: #f5f5f5;">
+
     <header>
-        <Label text="Добавление клиента" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label text="👤" style="-fx-font-size: 24px;"/>
+            <VBox>
+                <Label fx:id="dialogTitle" text="Добавление нового клиента"
+                       style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;">
+                    <font>
+                        <Font size="16"/>
+                    </font>
+                </Label>
+                <Label text="Заполните все поля для регистрации клиента"
+                       style="-fx-font-size: 11px; -fx-text-fill: #7f8c8d;"/>
+            </VBox>
+        </HBox>
     </header>
+
     <content>
-        <GridPane>
+        <GridPane hgap="15" vgap="15" style="-fx-background-color: white; -fx-background-radius: 5; -fx-padding: 20;">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
             <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" prefWidth="120"/>
+                <ColumnConstraints halignment="RIGHT" prefWidth="130"/>
                 <ColumnConstraints halignment="LEFT" prefWidth="350"/>
             </columnConstraints>
-            <Label text="Имя Фамилия Отчество" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+
+            <Label text="ФИО:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold; -fx-text-fill: #34495e;">
+                <font>
+                    <Font size="13"/>
+                </font>
+            </Label>
             <TextField fx:id="fullNameField" GridPane.rowIndex="0" GridPane.columnIndex="1"
-                       promptText="Например: Иванов Иван Иванович"/>
+                       promptText="Иванов Иван Иванович" prefHeight="35">
+                <style>
+                    -fx-background-radius: 5;
+                    -fx-border-radius: 5;
+                    -fx-border-color: #bdc3c7;
+                    -fx-padding: 5 10 5 10;
+                </style>
+            </TextField>
 
-            <Label text="Номер телефона: " GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Label text="Номер телефона:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold; -fx-text-fill: #34495e;">
+                <font>
+                    <Font size="13"/>
+                </font>
+            </Label>
             <TextField fx:id="phoneField" GridPane.rowIndex="1" GridPane.columnIndex="1"
-                       promptText="Например: +7 (999) 123-45-67"/>
+                       promptText="+7 (999) 123-45-67" prefHeight="35">
+                <style>
+                    -fx-background-radius: 5;
+                    -fx-border-radius: 5;
+                    -fx-border-color: #bdc3c7;
+                    -fx-padding: 5 10 5 10;
+                </style>
+            </TextField>
 
-            <Label text="E-mail: " GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Label text="E-mail:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold; -fx-text-fill: #34495e;">
+                <font>
+                    <Font size="13"/>
+                </font>
+            </Label>
             <TextField fx:id="emailField" GridPane.rowIndex="2" GridPane.columnIndex="1"
-                       promptText="Например: client@example.com"/>
+                       promptText="client@example.com" prefHeight="35">
+                <style>
+                    -fx-background-radius: 5;
+                    -fx-border-radius: 5;
+                    -fx-border-color: #bdc3c7;
+                    -fx-padding: 5 10 5 10;
+                </style>
+            </TextField>
 
-            <Label text="Паспортные данные" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+
+            <Label text="Паспортные&#10;данные:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                   style="-fx-font-weight: bold; -fx-text-fill: #34495e;">
+                <font>
+                    <Font size="13"/>
+                </font>
+            </Label>
             <TextField fx:id="passportField" GridPane.rowIndex="3" GridPane.columnIndex="1"
-                       promptText="Например: 4444 4444"/>
+                       promptText="4444 444444" prefHeight="35">
+                <style>
+                    -fx-background-radius: 5;
+                    -fx-border-radius: 5;
+                    -fx-border-color: #bdc3c7;
+                    -fx-padding: 5 10 5 10;
+                </style>
+            </TextField>
+
+            <HBox GridPane.rowIndex="4" GridPane.columnIndex="1" spacing="10">
+                <Label text="Все поля обязательны для заполнения"
+                       style="-fx-font-size: 10px; -fx-text-fill: #e74c3c;"/>
+            </HBox>
         </GridPane>
     </content>
 
-    <ButtonType fx:constant="OK"/>
-    <ButtonType fx:constant="CANCEL"/>
+    <buttonTypes>
+        <ButtonType fx:constant="OK"/>
+        <ButtonType fx:constant="CANCEL"/>
+    </buttonTypes>
+
+    <style>
+        .dialog-pane .button {
+        -fx-background-radius: 5;
+        -fx-padding: 7 15 7 15;
+        -fx-font-weight: bold;
+        }
+        .dialog-pane .button:default {
+        -fx-background-color: #2196F3;
+        -fx-text-fill: white;
+        }
+        .dialog-pane .button:cancel {
+        -fx-background-color: #95a5a6;
+        -fx-text-fill: white;
+        }
+        .dialog-pane .button:default:hover {
+        -fx-background-color: #1976D2;
+        }
+        .dialog-pane .button:cancel:hover {
+        -fx-background-color: #7f8c8d;
+        }
+    </style>
 </DialogPane>

@@ -112,13 +112,13 @@ public class ClientsController implements Initializable {
 
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.setDialogPane(dialogPane);
-            dialog.setTitle(client ==  null ? "Добавление комнаты" : "Редактирование комнаты");
+            dialog.setTitle(client ==  null ? "Добавление клиента" : "Редактирование клиента");
 
             Optional<ButtonType> result = dialog.showAndWait();
             if(result.isPresent() && result.get() == ButtonType.OK){
                 Client newClient = dialogController.getClientData();
                 if (newClient == null){
-                    System.out.println("Комната не сохранена");
+                    System.out.println("Клиент не сохранен");
                 }else{
                     clientRepository.save(newClient);
                     loadClientsData();
