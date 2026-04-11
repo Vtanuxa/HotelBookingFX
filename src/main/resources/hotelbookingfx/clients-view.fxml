@@ -1,56 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="hotelbookingfx.controller.ClientsController"
-      prefHeight="400.0" prefWidth="600.0">
+      prefHeight="500.0" prefWidth="750.0" spacing="10">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Управление клиентами" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+        <font>
+            <Font size="16"/>
+        </font>
+    </Label>
+
+    <Separator/>
+
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Поиск:" />
-        <TextField fx:id="searchField" promptText="ID клиента"/>
-        <Button text="🔍 Найти" />
-        <Button text="📋 Показать всех"/>
-        <Button text="➕ Добавить клиента" onAction="#handleAddClient"/>
-        <Button text="✏️ Редактировать"/>
-        <Button text="❌ Удалить"/>
-
+        <TextField fx:id="searchField" promptText="ID или ФИО клиента" prefWidth="200"/>
+        <Button text="🔍 Найти" onAction="#handleSearchClient" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="📋 Показать всех" onAction="#handleShowAllClients"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Добавить" onAction="#handleAddClient" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="✏️ Редактировать" onAction="#handleUpdateClient" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        <Button text="❌ Удалить" onAction="#handleDeleteClient" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
     </HBox>
 
-    <TableView fx:id="clientTable">
+    <TableView fx:id="clientTable" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn text="ID" prefWidth="50">
                 <cellValueFactory>
                     <PropertyValueFactory property="id"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="ФИО" prefWidth="200">
+            <TableColumn text="ФИО" prefWidth="220">
                 <cellValueFactory>
                     <PropertyValueFactory property="fullName"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Номер телефона" prefWidth="150">
+            <TableColumn text="Телефон" prefWidth="130">
                 <cellValueFactory>
                     <PropertyValueFactory property="phone"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="email" prefWidth="100">
+            <TableColumn text="Email" prefWidth="180">
                 <cellValueFactory>
                     <PropertyValueFactory property="email"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Паспорт" prefWidth="80">
+            <TableColumn text="Паспорт" prefWidth="120">
                 <cellValueFactory>
                     <PropertyValueFactory property="passport"/>
                 </cellValueFactory>
             </TableColumn>
-
         </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
     </TableView>
 
+    <HBox alignment="CENTER_RIGHT" spacing="5">
+        <Label text="Всего клиентов: " style="-fx-font-size: 11px;"/>
+        <Label fx:id="statusLabel" text="0" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+    </HBox>
 </VBox>

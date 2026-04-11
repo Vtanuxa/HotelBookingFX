@@ -87,6 +87,26 @@ public class RoomsController implements Initializable {
         showRoomDialog(null);
     }
 
+    @FXML
+    private void handleSearchRoom(){
+        showRoomDialog(null);
+    }
+
+    @FXML
+    private void handleShowAllRooms(){
+        showRoomDialog(null);
+    }
+
+    @FXML
+    private void handleUpdateRoom(){
+        showRoomDialog(null);
+    }
+
+    @FXML
+    private void handleDeleteRoom(){
+        showRoomDialog(null);
+    }
+
     private void showRoomDialog(Room room){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hotelbookingfx/room-dialog.fxml"));

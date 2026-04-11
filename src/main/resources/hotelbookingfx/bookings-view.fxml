@@ -13,7 +13,11 @@
                 <Label text="Label" />
                 <ComboBox prefWidth="150.0" />
                 <Separator prefWidth="200.0" />
-                <Button onAction="#handleAddBooking" mnemonicParsing="false" text="➕ Новое бронирование" />
+                <Button text="🔍 Найти" onAction="#handleSearchBooking" />
+                <Button text="📋 Показать всех"/>
+                <Button text="➕ Новое бронирование" mnemonicParsing="false"  onAction="#handleAddBooking"/>
+                <Button text="✏️ Редактировать"/>
+                <Button text="❌ Удалить"/>
             </children>
         </HBox>
         <TableView fx:id="bookingsTable" prefHeight="200.0" prefWidth="200.0">

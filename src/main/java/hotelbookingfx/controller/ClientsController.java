@@ -86,6 +86,24 @@ public class ClientsController implements Initializable {
         showClientDialog(null);
     }
 
+    @FXML
+    private void handleSearchClient(){
+    }
+
+    @FXML
+    private void handleShowAllClients(){
+    }
+
+    @FXML
+    private void handleUpdateClient(){
+        showClientDialog(null);
+    }
+
+    @FXML
+    private void handleDeleteClient(){
+    }
+
+
     private void showClientDialog(Client client){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/hotelbookingfx/client-dialog.fxml"));

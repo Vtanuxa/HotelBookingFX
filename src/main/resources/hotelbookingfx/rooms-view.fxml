@@ -1,55 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.cell.PropertyValueFactory?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="hotelbookingfx.controller.RoomsController"
-      prefHeight="400.0" prefWidth="600.0">
+      prefHeight="500.0" prefWidth="750.0" spacing="10">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <Label text="Управление номерами" style="-fx-font-size: 18px; -fx-font-weight: bold;">
+        <font>
+            <Font size="16"/>
+        </font>
+    </Label>
+
+    <Separator/>
+
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Поиск:" />
-        <TextField fx:id="searchField" promptText="Номер комнаты"/>
-        <Button text="🔍 Найти" />
-        <Button text="📋 Показать все"/>
-        <Button text="➕ Добавить номер" onAction="#handleAddRoom"/>
-        <Button text="✏️ Редактировать"/>
-        <Button text="❌ Удалить"/>
-
+        <TextField fx:id="searchField" promptText="Номер комнаты" prefWidth="150"/>
+        <Button text="🔍 Найти" onAction="#handleSearchRoom" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        <Button text="📋 Показать все" onAction="#handleShowAllRooms"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕ Добавить" onAction="#handleAddRoom" style="-fx-background-color: #2196F3; -fx-text-fill: white;"/>
+        <Button text="✏️ Редактировать" onAction="#handleUpdateRoom" style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+        <Button text="❌ Удалить" onAction="#handleDeleteRoom" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
     </HBox>
 
-    <TableView fx:id="roomsTable">
+    <TableView fx:id="roomsTable" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn text="ID" prefWidth="50">
+            <TableColumn text="ID" prefWidth="60">
                 <cellValueFactory>
                     <PropertyValueFactory property="id"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Номер" prefWidth="80">
+            <TableColumn text="Номер" prefWidth="100">
                 <cellValueFactory>
                     <PropertyValueFactory property="roomNumber"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Тип размещения" prefWidth="150">
+            <TableColumn text="Тип размещения" prefWidth="180">
                 <cellValueFactory>
                     <PropertyValueFactory property="type"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Статус" prefWidth="100">
+            <TableColumn text="Статус" prefWidth="120">
                 <cellValueFactory>
                     <PropertyValueFactory property="status"/>
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn text="Цена за сутки" prefWidth="150">
+            <TableColumn text="Цена за сутки" prefWidth="130">
                 <cellValueFactory>
                     <PropertyValueFactory property="pricePerNight"/>
                 </cellValueFactory>
             </TableColumn>
         </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
+        </columnResizePolicy>
     </TableView>
 
+
+    <HBox alignment="CENTER_RIGHT" spacing="5">
+        <Label text="Всего номеров: " style="-fx-font-size: 11px;"/>
+        <Label fx:id="statusLabel" text="0" style="-fx-font-size: 11px; -fx-font-weight: bold;"/>
+    </HBox>
 </VBox>
